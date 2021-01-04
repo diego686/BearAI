@@ -1,5 +1,7 @@
 # Images
 bears/
+images/readme/
+!images/readme/Screenshot.png
 
 
 # Byte-compiled / optimized / DLL files

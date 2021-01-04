@@ -32,10 +32,10 @@ interp.plot_top_losses(5, nrows=1)
 # cleaner
 
 
-# # Export the model
-# learn.export()
-# path=Path()
-# path.ls(file_exts='.pkl')
+# Export the model
+learn.export()
+path=Path()
+path.ls(file_exts='.pkl')
 
 
 # # Run the exported file as a program, on another server for a example
