@@ -11,7 +11,8 @@ bears = DataBlock(
 	get_items=get_image_files,
 	splitter=RandomSplitter(valid_pct=0.3, seed=42),
 	get_y=parent_label,
-	item_tfms=Resize(300))
+	item_tfms=Resize(300),
+	batch_tfms=aug_transforms(mult=2))
 
 dls = bears.dataloaders(path, num_workers=0)
 # dls.valid.show_batch(max_n=4, nrows=1)
@@ -26,14 +27,19 @@ interp.plot_confusion_matrix()
 
 interp.plot_top_losses(5, nrows=1)
 
-
-# Export the model
-learn.export()
-path=Path()
-path.ls(file_exts='.pkl')
+# Does not work
+# cleaner = ImageClassifierCleaner(learn)
+# cleaner
 
 
-# Run the exported file as a program, on another server for a example
-# Server inference
-learn_inf = load_learner(path/'export.pkl')
-learn_inf.predict('images/grizzly1.jpg')
+# # Export the model
+# learn.export()
+# path=Path()
+# path.ls(file_exts='.pkl')
+
+
+# # Run the exported file as a program, on another server for a example
+# # Server inference
+# learn_inf = load_learner(path/'export.pkl')
+# learn_inf.dls.vocab
+# learn_inf.predict('images/grizzly1.jpg')
